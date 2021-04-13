@@ -1,0 +1,20 @@
+
+ul, ol{
+    list-style:none;
+    color:none;
+}
+
+.boton-personalizado{
+    background-color: #1748BC;
+    color: #fff;
+}
+.boton-personalizado:hover{
+    color: #fff;
+}
+
+.colorblanco{
+    color: #fff;
+}
+.colorblanco{
+    text-size-adjust: ;
+}
