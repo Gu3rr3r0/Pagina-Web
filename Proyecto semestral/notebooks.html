@@ -25,64 +25,107 @@
 
 </head>
 
-<body>
-
+<body background="imagenes/fondo.webp">
     <!-- Menu Principal   -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img class="rounded-pill" src="imagenes/Logo.png" alt="" class="d-inline-block align-text-top">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <img class="rounded-pill" src="imagenes/Logo.png" alt="Logo" >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="home.html">Inicio</a>
+                  <a class="nav-link" href="home.html">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="nosotros.html">Nosotros</a>
+                  <a class="nav-link" href="nosotros.html">Nosotros</a>
               </li>
-        
-                <div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li class="nav-item">
+                  <div class="dropdown">
+                      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Productos
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="celulares.html">Celulares</a>
-                      <a class="dropdown-item" href="notebooks.html">Notebooks</a>
-                      <a class="dropdown-item" href="televisores.html">Televisores</a>
-                    </div>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="celulares.html">Celulares</a>
+                        <a class="dropdown-item" href="notebooks.html">Notebooks</a>
+                        <a class="dropdown-item" href="televisores.html">Televisores</a>
+                      </div>
                   </div>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="ofertas.html">Ofertas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="ofertas.html">Ofertas</a>
+                  <a class="nav-link" href="sucursales.html">Sucursal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="socursales.html">Socursales</a>
+                  <a class="nav-link" href="contactanos.html">Contáctanos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="contactanos.html">Contactanos</a>
+                <a class="nav-link " aria-current="page6" href="buscar.html">Buscar</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page6" href="login.html">Acceso</a>
               </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+          </ul>
+      </div>
+  </nav>
+   
+
     <!-- Fin del Menu Principal   -->
-    <center><p><h1>Notebooks</h1></p></center>
-    <br>
+    <center><p><h1 class="colorblanco">Notebooks</h1></p>
   
  <!--creo el contenedor-->
- <center>
-  <div class="container-fluid" style="margin-bottom: 50px;"> 
-
+ 
+  <div class="container-fluid separacion_A" style="margin-bottom: 50px;"> 
     <!-- Comienzo fila 1-->
-     <div class="row">
-          <div class="col-md-4 col-sm-12 " >
-            <div class="card" style="width: 18rem;" >
-              <img class="card-img-top" src="imagenes/notebooks/notebooks1.jpg" alt="Card image cap">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
+        <div class="card" style="width: 250px;" >
+          <img class="card-img-top responsive_imagenes" src="imagenes/ofertas/oferta1.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">MSI</h5>
+            <p class="card-text">MSI BRAVO 15 A4DCR R5/ AMD RYZEN™ 5/ 8GB RAM/ 256GB SSD/ AMD RX5300M/ 15.6"</p>
+            <h5 class="card-text"><del>$999.990</del></h5>
+            <h3 class="card-text">$769.990</h3>
+            <a href="#" class="btn boton-personalizado">Ver mas</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
+        <div class="card" style="width: 250px;" >
+          <img class="card-img-top responsive_imagenes" src="imagenes/ofertas/oferta4.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">HP</h5>
+            <p class="card-text">OMEN 15/INTEL® CORE™ I5/40GB/512GB SSD/GEFORCE RTX 2060 + SILLA GAMING HP OMEN</p>
+            <h5 class="card-text"><del>$1.249.990</del></h5>
+            <h3 class="card-text">$1.199.990</h3>
+            <a href="#" class="btn boton-personalizado">Ver mas</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
+        <div class="card" style="width: 250px;" >
+          <img class="card-img-top responsive_imagenes" src="imagenes/ofertas/oferta7.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">HUAWEI</h5>
+            <p class="card-text">HUAWEI MATEBOOK 13 / INTEL® CORE™ I5 / 8GB RAM / 512GB SSD / 13"</p><br>
+            <h5 class="card-text"><del>$849.990</del></h5>
+            <h3 class="card-text">$799.990</h3>
+            <a href="#" class="btn boton-personalizado">Ver mas</a>
+          </div>
+        </div>
+      </div>
+ </div>
+ <br></br>
+    
+    <!-- Comienzo fila 2-->
+     <div class="row">    
+          <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
+            <div class="card" style="width: 250px;" >
+              <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks1.jpg" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">HP</h5>
                 <p class="card-text">HP LAPTOP 15-EF1018LA / AMD RYZEN™ 5 / 8GB RAM / 256GB SSD / AMD RADEON GRAPHICS / 15.6"</p>
@@ -92,9 +135,9 @@
             </div>
           </div>
   
-          <div class="col-md-4 col-sm-12 centrado">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="imagenes/notebooks/notebooks2.jpg" alt="Card image cap">
+          <div class="col-md-4 col-sm-12 col-xs-12 separacion">
+            <div class="card" style="width: 250px;">
+              <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks2.jpg" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">ASUS</h5>
                 <p class="card-text">ASUS LAPTOP E410MA-BV037T / INTEL CELERON® / 4GB RAM /INTEL UHD GRAPHICS 600"</p>
@@ -104,9 +147,9 @@
             </div>
           </div>
   
-              <div class="col-md-4 col-sm-12 centrado">
-                  <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="imagenes/notebooks/notebooks3.jpg" alt="Card image cap">
+              <div class="col-md-4 col-sm-12 col-xs-12 separacion">
+                  <div class="card" style="width: 250px;">
+                    <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks3.jpg" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">LENOVO</h5>
                       <p class="card-text">LENOVO IDEAPAD S540 / INTEL® CORE™ I5 / 16GB RAM / 512GB SSD / INTEGRADA / 13.3 QHD</p>
@@ -117,11 +160,11 @@
               </div>
      </div>
      <br></br>
-    <!-- Comienzo fila 2-->
+    <!-- Comienzo fila 3-->
     <div class="row">
-      <div class="col-md-4 col-sm-12 " >
-        <div class="card" style="width: 18rem;" >
-          <img class="card-img-top" src="imagenes/notebooks/notebooks4.jpg" alt="Card image cap">
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
+        <div class="card" style="width: 250px;" >
+          <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks4.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">ACER</h5>
             <p class="card-text">ACER ASPIRE 3 A314 / AMD RYZEN™ 3 / 4GB RAM / 128GB SSD / AMD RADEON GRAPHICS / 14"</p>
@@ -131,9 +174,9 @@
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-12 centrado">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="imagenes/notebooks/notebooks5.jpg" alt="Card image cap">
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion">
+        <div class="card" style="width: 250px;">
+          <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks5.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">LENOVO</h5>
             <p class="card-text">LENOVO IDEAPAD S150 SLIM 1 / AMD A6 / 4GB RAM / 64GB EMMC / INTEGRADA / 14" / OFFICE</p>
@@ -143,9 +186,9 @@
         </div>
       </div>
 
-          <div class="col-md-4 col-sm-12 centrado">
-              <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="imagenes/notebooks/notebooks6.jpg" alt="Card image cap">
+          <div class="col-md-4 col-sm-12 col-xs-12 separacion">
+              <div class="card" style="width: 250px;">
+                <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks6.jpg" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">ASUS</h5>
                   <p class="card-text">ASUS FX506II/ AMD RYZEN™ 7/ 8GB RAM/ 512GB SSD/ NVIDIA GEFORCE GTX 1650 TI/15.6" FHD</p>
@@ -156,11 +199,11 @@
           </div>
      </div>
      <br></br>
-     <!--Comienzo fila 3-->
+     <!--Comienzo fila 4-->
      <div class="row">
-      <div class="col-md-4 col-sm-12 " >
-        <div class="card" style="width: 18rem;" >
-          <img class="card-img-top" src="imagenes/notebooks/notebooks7.jpg" alt="Card image cap">
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
+        <div class="card" style="width: 250px;" >
+          <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks7.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">MSI</h5>
             <p class="card-text">MSI GF63 THIN / INTEL® CORE™ I5 / 8GB RAM / 512GB SSD /GEFORCE GTX 1650 TI MAX Q / 15.6" FHD</p>
@@ -170,9 +213,9 @@
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-12 centrado">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="imagenes/notebooks/notebooks8.jpg" alt="Card image cap">
+      <div class="col-md-4 col-sm-12 col-xs-12 separacion">
+        <div class="card" style="width: 250px;">
+          <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks8.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">HP</h5>
             <p class="card-text">HP PAVILION GAMING/INTEL CORE™ I7/16GB RAM/1TB + 128GB SSD/GEFORCE GTX 1660 TI/ 15.6</p>
@@ -182,9 +225,9 @@
         </div>
       </div>
 
-          <div class="col-md-4 col-sm-12 centrado">
-              <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="imagenes/notebooks/notebooks9.jpg" alt="Card image cap">
+          <div class="col-md-4 col-sm-12 col-xs-12 separacion">
+              <div class="card" style="width: 250px;">
+                <img class="card-img-top responsive_imagenes" src="imagenes/notebooks/notebooks9.jpg" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">MSI</h5>
                   <p class="card-text">MSI GP65 LEOPARD / INTEL® CORE™ I7 / 16GB RAM / 512GB SSD / NVIDIA GEFORCE RTX 2060 / 15.6”</p>

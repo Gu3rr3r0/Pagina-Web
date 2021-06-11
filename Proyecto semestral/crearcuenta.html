@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,13 +21,12 @@
             height: 100%;
         }
         
-    
     </style>
     
 
 </head>
 
-<body>
+<body background="imagenes/fondo.webp">
         <!-- Menu Principal   -->
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
           <img class="rounded-pill" src="imagenes/Logo.png" alt="Logo" >
@@ -74,82 +74,85 @@
        
     
         <!-- Fin del Menu Principal   -->
-  
-
-    <!-- Banner-->
-    <div id="demo" class="carousel slide" data-ride="carousel" style="margin-bottom: 50px;">
-
-      <!-- Indicators -->
-      <ul class="carousel-indicators">
-          <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
-      </ul>
-
-      <!-- The slideshow -->
-      <div class="carousel-inner">
-          <div class="carousel-item active">
-              <img src="imagenes/banner1.png" alt="banner1" width="1100" height="500">
-          </div>
-          <div class="carousel-item">
-              <img src="imagenes/banner2.png" alt="banner2" width="1100" height="500">
-          </div>
-          <div class="carousel-item">
-              <img src="imagenes/banner3.png" alt="banner3" width="1100" height="500">
-          </div>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon" style="width: 48px !important;height: 49px !important;"></span>
-      </a>
-      <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon" style="width: 48px !important;height: 49px !important;"></span>
-      </a>
-  </div>
-  
     
-  
-
-<center><p><h1 class="colornegro">Nuestros Productos</h1></p>
-    <!-- sm sd lg xl-->
-
-<div class="container-fluid separacion_A"  style="margin-bottom: 50px;"> <!--creo el contenedor-->
-   <div class="row">
-        <div class="col-md-4 col-sm-12 col-xs-12 separacion" >
-          <div class="card" style="width: 250px;" >
-            <img class="card-img-top responsive_imagenes" src="imagenes/celular1.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Celulares</h5>
-              <p class="card-text">Sumate a nuestra experiencia con nuestros Smartphone de ultima generacion.</p>
-              <a href="celulares.html" class="btn boton-personalizado">Ver mas</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-12 col-xs-12 separacion">
-          <div class="card" style="width: 250px;">
-            <img class="card-img-top responsive_imagenes" src="imagenes/note1.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Notebooks</h5>
-              <p class="card-text">Sumate a nuestra experiencia con nuestros Notebooks de ultima generacion.</p>
-              <a href="notebooks.html" class="btn boton-personalizado">Ver mas</a>
-            </div>
-          </div>
-        </div>
-
-            <div class="col-md-4 col-sm-12 col-xs-12 separacion">
-                <div class="card" style="width: 250px;">
-                  <img class="card-img-top responsive_imagenes" src="imagenes/tele1.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Televisores</h5>
-                    <p class="card-text">Sumate a nuestra experiencia con nuestros Televisores de ultima generacion.</p>
-                    <a href="televisores.html" class="btn boton-personalizado">Ver mas</a>
+      <center>
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+           
+            <main class="form-signin">
+                <form action="#" method="POST" name="form" id="form">
+                  <img class="mb-4" src="imagenes/Logo.png" alt="" >
+                  <h1 class="h3 mb-3 fw-normal">Crear Cuenta</h1>
+              
+                  <div class="form-floating">
+                    <label for="floatingInput" class="float-left">Correo</label>
+                    <input type="email" class="form-control"  name="correo" id="correo"  placeholder="nombre@ejemplo.com">
+                    
                   </div>
-                </div>
-            </div>
-   </div>
-</div>  
+                  <br>
+                  <div class="form-floating">
+                    <label for="floatingPassword" class="float-left">Contraseña</label>
+                    <input type="password" class="form-control" name="contra"  id="contra"  placeholder="*********">
+                   
+                  </div>
+<br>
+                  <div class="form-floating">
+                    <label for="floatingInput"  class="float-left">Pregunta secreta</label>
+                    <input type="email" class="form-control"  name="pregunta" id="pregunta" placeholder="¿Nombre de tu madre?">
+                    
+                  </div>
+              <br>
+                  
+                  <button class="w-100 btn btn-lg btn-success" type="submit">Crear Cuenta</button>
+                
+                 
+                </form>
+              </main>
+        </div>
+      </div>
+      <hr>
+      <div id="error" class="alert alert-danger " style="width: 50%;"></div>
+    </div>
 </center>
-</body>
+
+
+
+<script type="text/javascript">
+    
+  $(document).ready(function(){
+      $("#error").hide(); //ocultando el div de los errores
+      
+      //indicar que las validaciones del formulario se ejecutaran solo cuando se
+      //presione el submit
+      $("#form").submit(function(){
+  
+          var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+          
+          if($("#correo").val().trim().length == 0){
+              mensaje = mensaje + "<br>-El correo electrónico no puede estar en blanco.";
+          }
+
+          if($("#contra").val().trim().length == 0){
+              mensaje = mensaje + "<br>-La contraseña no puede estar en blanco.";
+          }
+
+          if($("#pregunta").val().trim().length == 0){
+              mensaje = mensaje + "<br>-La pregunta secreta no puede estar en blanco.";
+          }
+
+
+          
+
+          if(mensaje != "Por favor revisar los siguientes detalles en el formulario:"){
+              $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+              $("#error").show();//hace visible el div
+              event.preventDefault();//evita que los datos del formulario se envien
+
+          }
+      });
+  });
+
+  </script>
+  </body>
 </html>

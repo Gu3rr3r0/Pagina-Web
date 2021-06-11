@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +26,7 @@
 
 </head>
 
-<body background="imagenes/fondo.webp" style="color:#fff;">
+<body background="imagenes/fondo.webp">
     <!-- Menu Principal   -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
       <img class="rounded-pill" src="imagenes/Logo.png" alt="Logo" >
@@ -73,84 +74,45 @@
    
 
     <!-- Fin del Menu Principal   -->
-
-    <div class="container">
-      <div class="row">
-          <div class="col-md-12">
-            <div class="container espaciado_superior">
-
-              <h1>Comunicate con Nosotros</h1>
-              <form action="home.html" method="POST" name="formulario_contacto" id="formulario_contacto">
-                  <div class="form-group">
-                      <label for="nombre_completo">Nombre Completo:</label>
-                      <input type="text" class="form-control" name="nombre_completo" id="nombre_completo"
-                          placeholder="Ingrese su nombre">
-                  </div>
-      
-                  <div class="form-group">
-                      <label for="correo">Correo Electrónico:</label>
-                      <input type="email" class="form-control" name="correo" id="correo" placeholder="nombre@ejemplo.com">
-                          
-                  </div>
-      
-                  <div class="form-group">
-                      <label for="telefono">Número de Teléfono:</label>
-                      <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="56911111111">
-                  </div>
-
-                  <div class="form-group">
-                      <label for="comentario">Comentarios:</label>
-                      <textarea class="form-control" id="comentario" name="comentario"  placeholder="Escriba aqui..." rows="5" required></textarea>
-                  </div>
-      
-                  <div class="form-group">
-                      <div id="error" class="alert alert-danger"></div>
-                      <button type="reset" class="btn btn-dark">Limpiar Campos</button>
-                      <button type="submit" class="btn btn-primary">Enviar Formulario</button>
-                  </div>
-      
-      
-      
-              </form>
-      
-          </div>
-          </div>
-      </div>
-  </div>
-
- 
-<script type="text/javascript">
     
-  $(document).ready(function(){
-      $("#error").hide(); //ocultando el div de los errores
-      
-      //indicar que las validaciones del formulario se ejecutaran solo cuando se
-      //presione el submit
-      $("#formulario_contacto").submit(function(){
-          var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
-          
-          if($("#nombre_completo").val().trim().length == 0){
-              mensaje = mensaje + "<br>-El nombre no puede estar en blanco";
-          }
+      <center>
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <main class="form-signin">
+                <form>
+                  <img class="mb-4" src="imagenes/Logo.png" alt="" >
+                  <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+              
+                  <div class="form-floating">
+                    <label for="floatingInput" class="float-left">Correo electrónico:</label>
+                    <input type="email" class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com">
+                    
+                  </div>
+                  <br>
+                  <div class="form-floating">
+                    <label for="floatingPassword" class="float-left">Contraseña:</label>
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="*********" >
+                   
+                  </div>
+              
+                  <div class="checkbox mb-3">
+                    <label>
+                        <a type="button" class="btn btn-link" href="recuperar.html" >Recuperar contraseña</a>
+                        <a class="nav-link " aria-current="page6" href="crearcuenta.html">Crear Cuenta</a>
+                    </label>
+                  </div>
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+                 
+                </form>
+              </main>
+        </div>
+      </div>
+    </div>
+</center>
 
-          if($("#correo").val().trim().length == 0){
-              mensaje = mensaje + "<br>-El correo electrónico no puede estar en blanco.";
-          }
 
-          if( isNaN($("#telefono").val()) ){
-              mensaje = mensaje + "<br>-El teléfono solo puede tener números";
-          }
 
-          if(mensaje != "Por favor revisar los siguientes detalles en el formulario:"){
-              $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
-              $("#error").show();//hace visible el div
-              event.preventDefault();//evita que los datos del formulario se envien
-
-          }
-      });
-  });
-
-  </script>
-
-</body>
+    
+  </body>
 </html>

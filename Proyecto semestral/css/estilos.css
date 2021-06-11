@@ -1,5 +1,3 @@
-
-
 ul, ol{
     list-style:none;
     color:none;
@@ -11,4 +9,45 @@ ul, ol{
 }
 .boton-personalizado:hover{
     color: #fff;
+}
+
+.colorblanco{
+    color: #fff;
+}
+.colorblanco{
+    text-size-adjust: ;
+}
+
+
+.colornegro{
+    color: rgb(7, 5, 5);
+}
+.colornegro{
+    text-size-adjust: ;
+}
+
+.responsive_imagenes{
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #000000;
+}
+
+.separacion{
+    margin-bottom: 5%;
+}
+
+.separacion_D{
+    margin-right: 5%;
+}
+
+
+
+.separacion_A{
+    margin-top: 3%;
+}
+
+
+
+.centrado{
+    text-align: center;
 }
