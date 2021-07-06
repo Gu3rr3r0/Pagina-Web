@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>TechHouse: Compras Tecnologicas.</title>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'paginaweb/css/estilos.css' %}">
+
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+        background-color: rgb(253, 253, 216);
+    }   
+    
+    </style>
+    
+
+</head>
+
+<body background="" style="color:rgb(24, 10, 10);">
+        <!-- Menu Principal   -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+          <img class="rounded-pill" src="{% static 'paginaweb/imagenes/Logo.png' %}" alt="Logo" >
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav centradito">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                      <div class="dropdown">
+                          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Productos
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{% url 'celulares' %}">Celulares</a>
+                            <a class="dropdown-item" href="{% url 'notebooks' %}">Notebooks</a>
+                            <a class="dropdown-item" href="{% url 'televisores' %}">Televisores</a>
+                          </div>
+                      </div>
+                    </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'sucursales' %}">Sucursal</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contactanos' %}">Contáctanos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page6" href="{% url 'buscar' %}">Buscar</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  {% if user.is_staff %}
+                  <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{% url 'listadosolicitud' %}">Listar Solicitudes</a>
+                          <a class="dropdown-item" href="{% url 'listadoproductos' %}">Listar Productos</a>
+                          <a class="dropdown-item" href="{% url 'registrarproducto' %}">Registrar Productos</a>
+                        </div>
+                    </div>
+                  </li>
+                  {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page6">{{ user.username }}</a>
+                    <a class="nav-link " aria-current="page6" href="{% url 'logout' %}">Cerrar Sesion</a>
+                  </li>
+                  
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page6" href="{% url 'acceso' %}">Acceso</a>
+                  </li>
+                  {% endif %}
+                  <li class="nav-item">                
+                    <a class="nav-link " aria-current="page6" href="{% url 'carritocompra' %}">
+                      <img src="https://img.icons8.com/fluent/48/000000/add-shopping-cart.png"/>
+                    </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+       
+    
+        <!-- Fin del Menu Principal   -->
+    <center>
+    {% if user.is_authenticated %}
+     <div class="container-fluid">
+            {% if messages %}
+            <div>
+                {% for i in messages %}
+                <h3><p style="color: rgb(2, 0, 8);">{{ i }}</p></h3>
+                {% endfor %}
+            </div>
+
+       {% endif %}
+          <div class="col-md-6 col-sm-12 col-xs-12 separacion_A separacion_D">
+            <h2>Carro de compra:</h2>
+           <table class="table table-hover separacion_A">
+              <thead>
+                <tr>
+                  <th scope="col">Tipo Producto</th>
+                  <th scope="col">Foto Producto</th>
+                  <th scope="col">Marca Producto</th>
+                  <th scope="col">Cantidad Producto</th>
+                  <th scope="col">Descripcion Producto</th>
+                  <th scope="col">Precio Producto</th>
+                  <th scope="col">Acciones</th>
+
+                </tr>
+                {% for m in listadoc %}
+                   <tr>
+                        <td>{{ m.producto.tipoProducto }} {{m.producto.nomProducto}}</td>
+                        <td>
+                          {% if m.producto.foto %}
+                              <img src="{{ m.producto.foto.url }}" style="width: 130%;max-width: 130px;">
+                          {% endif %}
+
+                        </td>
+                        <td>{{ m.producto.nomProducto }}</td>
+                        <td>{{ m.cantidadProd }}</td>
+                        <td>{{ m.producto.descProducto }}</td>
+                        <td>${{ m.producto.preProducto }}</td>
+                        <td><a href="{% url 'eliminar_carrito' m.idCarrito%}">Eliminar</a></td>
+                   </tr>
+                {% endfor %}
+              </thead>
+            </table>
+          </div>
+          <tr style="font-size: 20px;">
+              <td></td>
+              <td></td>
+              <td></td>
+              <h3><td>Total a Pagar:</td></h3>
+              {% if x == 0 %}
+              <h3><td>${{ suma }}</td></h3>
+              {% else %}
+              <h3><td>${{ suma.totalProd__sum }}</td></h3>
+              {% endif %}
+              <td></td>
+              <div class="col-md-12">
+                    <p><a href="{% url 'pagar' %}" class="btn boton-personalizado">Pagar</a></p>
+              </div>
+
+          </tr>
+     </div>
+   {% else %}
+   <h2>Debe Estar logeado para ingresar a esta pagina web.</h2>
+   {% endif %}
+   </center>
+
+</body>
+</html>
