@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>TechHouse: Compras Tecnologicas.</title>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'paginaweb/css/estilos.css' %}">
+
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+    
+
+</head>
+
+<body background="{% static 'paginaweb/imagenes/fondo.webp' %}">
+        <!-- Menu Principal   -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+          <img class="rounded-pill" src="{% static 'paginaweb/imagenes/Logo.png' %}" alt="Logo" >
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav centradito">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                      <div class="dropdown">
+                          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Productos
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{% url 'celulares' %}">Celulares</a>
+                            <a class="dropdown-item" href="{% url 'notebooks' %}">Notebooks</a>
+                            <a class="dropdown-item" href="{% url 'televisores' %}">Televisores</a>
+                          </div>
+                      </div>
+                    </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'sucursales' %}">Sucursal</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contactanos' %}">Contáctanos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page6" href="{% url 'buscar' %}">Buscar</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  {% if user.is_staff %}
+                  <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{% url 'listadosolicitud' %}">Listar Solicitudes</a>
+                          <a class="dropdown-item" href="{% url 'listadoproductos' %}">Listar Productos</a>
+                          <a class="dropdown-item" href="{% url 'registrarproducto' %}">Registrar Productos</a>
+                        </div>
+                    </div>
+                  </li>
+                  {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page6">{{ user.username }}</a>
+                    <a class="nav-link " aria-current="page6" href="{% url 'logout' %}">Cerrar Sesion</a>
+                  </li>
+                  
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page6" href="{% url 'acceso' %}">Acceso</a>
+                  </li>
+                  {% endif %}
+                  <li class="nav-item">                
+                    <a class="nav-link " aria-current="page6" href="{% url 'carritocompra' %}">
+                      <img src="https://img.icons8.com/fluent/48/000000/add-shopping-cart.png"/>
+                    </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+       
+    
+        <!-- Fin del Menu Principal   -->
+      
+<center>
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+                <form action="{% url 'registrarusuario'%}" method="POST" name="form" id="registrarusuario">
+                  {% csrf_token %}
+                  <img class="mb-4" src="{% static 'paginaweb/imagenes/Logo.png' %}" alt="" >
+                  <h1 class="h3 mb-3 fw-normal">Crear Cuenta</h1>
+
+                  <div class="form-floating">
+                    <label for="rutu" class="float-left">Ingrese su rut:
+                      (sin puntos y sin guion)</label>
+                    <input type="number" class="form-control" name="rutu"  id="rutu"  placeholder="11111111k">
+                  </div>
+
+                  <div class="form-floating">
+                    <label for="nombreu" class="float-left">Ingrese su nombre:</label>
+                    <input type="text" class="form-control" name="nombreu"  id="nombreu"  placeholder="Miguel" required>
+                  </div>
+
+                  <div class="form-floating">
+                    <label for="apellidou" class="float-left">Ingrese su apellido:</label>
+                    <input type="text" class="form-control" name="apellidou"  id="apellidou"  placeholder="Rojas" required>
+                  </div>
+
+                  <div class="form-floating">
+                    <label for="emailu" class="float-left">Ingrese su correo electrónico:</label>
+                    <input type="email" class="form-control"  name="emailu" id="emailu"  placeholder="nombre@ejemplo.com" required>
+                    
+                  </div>
+                  <br>
+                  <div class="form-floating">
+                    <label for="contrau" class="float-left">Ingrese su contraseña:</label>
+                    <input type="password" class="form-control" name="contrau"  id="contrau"  placeholder="*********" required>
+                   
+                  </div>
+
+                  <div class="form-floating">
+                    <label for="numerou" class="float-left">Ingrese su Numero telefónico:</label>
+                    <input type="text" class="form-control" name="numerou"  id="numerou"  placeholder="958635421" required>
+                  </div>
+
+                  <div class="form-floating">
+                    <label for="direccionu" class="float-left">Ingrese su dirección:</label>
+                    <input type="text" class="form-control" name="direccionu"  id="direccionu"  placeholder="santa elena 456, Huechuraba "required>
+                  </div>
+                  <br>
+                  <button class="w-100 btn btn-lg btn-success" type="submit">Crear Cuenta</button>
+                
+                
+                </form>
+        </div>
+      </div>
+      <hr>
+      <div id="error" class="alert alert-danger " style="width: 50%;"></div>
+    </div>
+</center>
+
+
+
+<script type="text/javascript">
+    
+  $(document).ready(function(){
+      $("#error").hide(); //ocultando el div de los errores
+      
+      //indicar que las validaciones del formulario se ejecutaran solo cuando se
+      //presione el submit
+      $("#form").submit(function(){
+  
+          var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+          
+          if($("#correo").val().trim().length == 0){
+              mensaje = mensaje + "<br>-El correo electrónico no puede estar en blanco.";
+          }
+
+          if($("#contra").val().trim().length == 0){
+              mensaje = mensaje + "<br>-La contraseña no puede estar en blanco.";
+          }
+
+          if($("#pregunta").val().trim().length == 0){
+              mensaje = mensaje + "<br>-La pregunta secreta no puede estar en blanco.";
+          }
+
+
+          
+
+          if(mensaje != "Por favor revisar los siguientes detalles en el formulario:"){
+              $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+              $("#error").show();//hace visible el div
+              event.preventDefault();//evita que los datos del formulario se envien
+
+          }
+      });
+  });
+
+  </script>
+  </body>
+</html>
