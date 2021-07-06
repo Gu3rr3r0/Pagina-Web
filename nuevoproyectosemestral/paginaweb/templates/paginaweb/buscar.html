@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>TechHouse: Compras Tecnologicas.</title>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'paginaweb/css/estilos.css' %}">
+
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+        background-color: rgb(253, 253, 216);
+        }
+
+    </style>
+    
+
+</head>
+
+<body background-color: rgb(249, 231, 159);>
+        <!-- Menu Principal   -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <img class="rounded-pill" src="{% static 'paginaweb/imagenes/Logo.png' %}" alt="Logo" >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav centradito">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Productos
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="{% url 'celulares' %}">Celulares</a>
+                              <a class="dropdown-item" href="{% url 'notebooks' %}">Notebooks</a>
+                              <a class="dropdown-item" href="{% url 'televisores' %}">Televisores</a>
+                            </div>
+                        </div>
+                      </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sucursales' %}">Sucursal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contactanos' %}">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " aria-current="page6" href="{% url 'buscar' %}">Buscar</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                    <li class="nav-item">
+                      <div class="dropdown">
+                          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{% url 'listadosolicitud' %}">Listar Solicitudes</a>
+                            <a class="dropdown-item" href="{% url 'listadoproductos' %}">Listar Productos</a>
+                            <a class="dropdown-item" href="{% url 'registrarproducto' %}">Registrar Productos</a>
+                          </div>
+                      </div>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page6">{{ user.username }}</a>
+                      <a class="nav-link " aria-current="page6" href="{% url 'logout' %}">Cerrar Sesion</a>
+                    </li>
+                    
+                    {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link " aria-current="page6" href="{% url 'acceso' %}">Acceso</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">                
+                      <a class="nav-link " aria-current="page6" href="{% url 'carritocompra' %}">
+                        <img src="https://img.icons8.com/fluent/48/000000/add-shopping-cart.png"/>
+                      </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+         
+      
+          <!-- Fin del Menu Principal   -->
+<center>
+    <div class="container-fluid separacion_A separacion_D">
+      <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="well well-sm">
+                  <form class="form-horizontal" method="GET">
+                    {% csrf_token %}
+                      <fieldset>
+                          <legend class="text-center header"><h1>Buscar producto por Marca</h1></legend>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                              <div class="col-md-8">
+                                  <input id="name" name="buscar" type="text" placeholder="Ej: SAMSUNG" class="form-control" autocomplete="off" value="{{ request.GET.buscar}}">
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <div class="col-md-12 text-center">
+                                  <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+                              </div>
+                          </div>
+                      </fieldset>
+                  </form>
+              </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+              <h2>Resultado de la búsqueda</h2>
+              <table class="table table-hover separacion_A">
+                <thead>
+                  <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Marca Producto</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio</th>
+
+  
+                  </tr>
+                  {% if producto %}
+                     {% for m in producto %}
+                     <tr>
+                          <td>{{ m.idProducto }}</td>
+                          <td>{{ m.tipoProducto }}</td>
+                          <td>{{ m.nomProducto }}</td>
+                          <td>{{ m.stock }}</td>
+                          <td>{{ m.descProducto }}</td>
+                          <td>{{ m.preProducto }}</td>
+
+
+                     </tr>
+                     {% endfor %}
+                   {% endif %}
+                </thead>
+              </table>
+          </div>
+      </div>
+  </div>
+</center>
+ 
+ 
+</body>
+</html>
